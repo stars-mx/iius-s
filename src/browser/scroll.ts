@@ -16,7 +16,7 @@ export interface IScrollIns {
 
 const defaultConfig: ScrollCondig = {
     target: '',
-    speed: 100          // 值越小，速度越快
+    speed: 100 // 值越小，速度越快
 }
 
 const cubic = (value: number) => Math.pow(value, 3)
@@ -24,7 +24,7 @@ const easeInOutCubic = (value: number) => value < 0.5
     ? cubic(value * 2) / 2
     : 1 - cubic((1 - value) * 2) / 2
 
-function Scroll(option: ScrollCondig = {}): IScrollIns {
+function Scroll (option: ScrollCondig = {}): IScrollIns {
     option = { ...defaultConfig, ...option }
 
     let cb: any = null
