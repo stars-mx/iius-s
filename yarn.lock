@@ -1298,11 +1298,6 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-user@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.npmmirror.com/user/-/user-0.0.0.tgz"
-  integrity sha512-eRNM5isOvr6aEFAGi1CqAkmLkYxW2NJ5ThhbD+6IJXYKM1mo7Gtxx4mQIveHz/5K3p/SVnlW9k17ETn+QAu8IQ==
-
 v8-compile-cache@^2.0.3:
   version "2.3.0"
   resolved "https://registry.npmmirror.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz"
