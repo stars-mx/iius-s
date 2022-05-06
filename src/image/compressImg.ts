@@ -1,15 +1,9 @@
 /**
- * @Author: luoob
- * @Last Modified by: luoob
- * @Introduction: 和图片相关的的函数
- */
-
-/**
  * 压缩图片方法
  * @param {file} file 文件
  * @param {Number} quality 图片质量(取值0 - 1之间默认0.92)
  */
-export const compressImg = (file: any, quality: number) => {
+const compressImg = (file: any, quality: number) => {
 	let qualitys = 0.52
 	if (parseInt((file.size / 1024).toFixed(2)) < 1024) {
 		qualitys = 0.85
@@ -126,3 +120,5 @@ export const compressImg = (file: any, quality: number) => {
 		})
 	}
 }
+
+export default compressImg
