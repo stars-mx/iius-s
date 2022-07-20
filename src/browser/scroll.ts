@@ -1,7 +1,6 @@
 /**
-* @Author: luoob
-* @Last Modified by: luoob
-* @Introduction: 滚动处理函数
+* @fileoverview 滚动处理函数
+* @author Luoob
 */
 
 interface ScrollCondig {
@@ -24,7 +23,7 @@ const easeInOutCubic = (value: number) => value < 0.5
     ? cubic(value * 2) / 2
     : 1 - cubic((1 - value) * 2) / 2
 
-function Scroll (option: ScrollCondig = {}): IScrollIns {
+export function scroll (option: ScrollCondig = {}): IScrollIns {
     option = { ...defaultConfig, ...option }
 
     let cb: any = null
@@ -77,5 +76,3 @@ function Scroll (option: ScrollCondig = {}): IScrollIns {
         scrollToTop: (fn?: () => void) => scrollTo(0, fn)
     }
 }
-
-export default Scroll

@@ -6,7 +6,7 @@ import { CreateTime } from 'src/types/common'
  * @param {string} unit
  * @returns {number}
  */
-const createTime = (option: CreateTime.Option, unit: CreateTime.Unit = 'millisecond') => {
+export const createTime = (option: CreateTime.Option, unit: CreateTime.Unit = 'millisecond') => {
 	const { hour = 0, minute = 0, second = 0 } = option
 	const times = unit === 'millisecond' ? 1000 : 1
 	let totalTime = 0
@@ -22,5 +22,3 @@ const createTime = (option: CreateTime.Option, unit: CreateTime.Unit = 'millisec
 
 	return totalTime
 }
-
-export default createTime;

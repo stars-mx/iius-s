@@ -3,6 +3,4 @@
  * @param {any} n:number
  * @returns {any}
  */
-const padZero = (n: number) => (n < 10 ? `0${n}` : String(n))
-
-export default padZero
+export const padZero = (n: number) => (n < 10 ? `0${n}` : String(n))

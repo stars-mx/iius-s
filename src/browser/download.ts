@@ -1,16 +1,10 @@
 /**
- * @Author: luoob
- * @Last Modified by: luoob
- * @Introduction: 常用的一些函数
- */
-
-/**
  * 点击下载文件
  * @param {string | Blob} blob
  * @param {string} fileName
  * @returns {any}
  */
-const download = (blob: any, fileName: string, isUrl = false) => {
+export const download = (blob: any, fileName: string, isUrl = false) => {
 	let downloadUrl: any = ''
 	if (isUrl && typeof blob === 'string') {
 		downloadUrl = blob
@@ -25,5 +19,3 @@ const download = (blob: any, fileName: string, isUrl = false) => {
 	link.href = downloadUrl
 	link.click()
 }
-
-export default download

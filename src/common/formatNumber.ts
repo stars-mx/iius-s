@@ -1,4 +1,4 @@
-import toThousands from './toThousands'
+import { toThousands } from './toThousands'
 
 /**
  * 当数字小于10万时，返回带千分位的数字；
@@ -19,5 +19,3 @@ export const formatNumber = (num: string | number) => {
 		? (num / 10000).toFixed(1) + '万'
 		: (num / 100000000).toFixed(1) + '亿'
 }
-
-export default formatNumber
