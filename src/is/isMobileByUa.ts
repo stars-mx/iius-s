@@ -4,6 +4,6 @@
  * @returns {any}
  */
 export const isMobileByUa = (userAgent: string = window.navigator.userAgent) => {
-	const reg = /(Android|iPhone|Windows Phone|iPad|webOS|BlackBerry|mobile)/i
-	return reg.test(userAgent)
+    const reg = /(Android|iPhone|Windows Phone|iPad|webOS|BlackBerry|mobile)/i
+    return reg.test(userAgent)
 }

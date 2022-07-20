@@ -3,7 +3,7 @@
 * @author Luoob
 */
 
-interface ScrollCondig {
+export interface ScrollCondig {
     target?: string
     speed?: number
 }

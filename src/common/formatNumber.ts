@@ -9,13 +9,13 @@ import { toThousands } from './toThousands'
  * @return {String} 格式化后的数字
  */
 export const formatNumber = (num: string | number) => {
-	num = Number(num)
-	if (isNaN(num)) {
-		return num
-	}
-	return num < 100000
-		? toThousands(num)
-		: num < 100000000
-		? (num / 10000).toFixed(1) + '万'
-		: (num / 100000000).toFixed(1) + '亿'
+    num = Number(num)
+    if (isNaN(num)) {
+        return num
+    }
+    return num < 100000
+        ? toThousands(num)
+        : num < 100000000
+            ? (num / 10000).toFixed(1) + '万'
+            : (num / 100000000).toFixed(1) + '亿'
 }

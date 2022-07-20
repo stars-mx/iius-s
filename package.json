@@ -1,6 +1,6 @@
 {
   "name": "iius",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "common utilities function map",
   "main": "dist/lib/index.js",
   "scripts": {
