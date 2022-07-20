@@ -1,8 +1,8 @@
 {
   "name": "iius",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "common utilities function map",
-  "main": "dist/index.js",
+  "main": "dist/lib/index.js",
   "scripts": {
     "build": "npm run clean && npx tsc-esm",
     "clean": "rimraf dist",
