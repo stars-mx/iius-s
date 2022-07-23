@@ -9,6 +9,7 @@ export * from './common/createTime'
 export * from './common/formatNumber'
 export * from './common/padZero'
 export * from './common/toThousands'
+export * from './common/delay'
 
 // image
 export * from './image/compressImg'
