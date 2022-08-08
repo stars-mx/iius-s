@@ -23,7 +23,12 @@ const easeInOutCubic = (value: number) => value < 0.5
     ? cubic(value * 2) / 2
     : 1 - cubic((1 - value) * 2) / 2
 
-export function scroll (option: ScrollCondig = {}): IScrollIns {
+/**
+ * 页面滚动
+ * @param {ScrollCondig} option
+ * @returns {IScrollIns}
+ */
+function scroll (option: ScrollCondig = {}): IScrollIns {
     option = { ...defaultConfig, ...option }
 
     let cb: any = null
@@ -76,3 +81,5 @@ export function scroll (option: ScrollCondig = {}): IScrollIns {
         scrollToTop: (fn?: () => void) => scrollTo(0, fn)
     }
 }
+
+export default scroll

@@ -1,12 +1,18 @@
-import { CreateTime } from 'src/types/common'
+interface Option {
+    hour?: number
+    minute?: number
+    second?: number
+}
+
+type Unit = 'millisecond' | 'second'
 
 /**
  * 创建时间(单位：毫秒 | 秒)
- * @param {CreateTime.Option} option
+ * @param {Option} option
  * @param {string} unit
  * @returns {number}
  */
-export const createTime = (option: CreateTime.Option, unit: CreateTime.Unit = 'millisecond') => {
+const createTime = (option: Option, unit: Unit = 'millisecond') => {
     const { hour = 0, minute = 0, second = 0 } = option
     const times = unit === 'millisecond' ? 1000 : 1
     let totalTime = 0
@@ -22,3 +28,5 @@ export const createTime = (option: CreateTime.Option, unit: CreateTime.Unit = 'm
 
     return totalTime
 }
+
+export default createTime

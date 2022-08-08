@@ -2,9 +2,10 @@
  * 点击下载文件
  * @param {string | Blob} blob
  * @param {string} fileName
- * @returns {any}
+ * @param {boolean} isUrl
+ * @returns {void}
  */
-export const download = (blob: any, fileName: string, isUrl = false) => {
+const download = (blob: any, fileName: string, isUrl = false) => {
     let downloadUrl: any = ''
     if (isUrl && typeof blob === 'string') {
         downloadUrl = blob
@@ -19,3 +20,5 @@ export const download = (blob: any, fileName: string, isUrl = false) => {
     link.href = downloadUrl
     link.click()
 }
+
+export default download

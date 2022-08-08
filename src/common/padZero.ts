@@ -1,6 +1,13 @@
 /**
  * 向 < 10 的数值进行补 0
- * @param {any} n:number
- * @returns {any}
+ * @param {number} n
+ * @returns {string | number}
  */
-export const padZero = (n: number) => (n < 10 ? `0${n}` : String(n))
+const padZero = (n: number) => {
+    if (!Number.isInteger(n)) {
+        return n
+    }
+    return (n < 10 ? `0${n}` : String(n))
+}
+
+export default padZero

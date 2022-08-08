@@ -3,7 +3,7 @@
  * @param {string} val
  * @returns {any}
  */
-export const copy = () => {
+const copy = () => {
     let el: any = null
     const id = 'copy-id'
 
@@ -34,3 +34,5 @@ export const copy = () => {
         }
     }
 }
+
+export default copy

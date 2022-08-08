@@ -1,19 +1,27 @@
-// browser
-export * from './browser/scroll'
-export * from './browser/download'
+import download from './browser/download.js'
+import scroll from './browser/scroll.js'
+import copy from './common/copy.js'
+import createCountDown from './common/createCountDown.js'
+import createTime from './common/createTime.js'
+import delay from './common/delay.js'
+import formatNumber from './common/formatNumber.js'
+import padZero from './common/padZero.js'
+import toThousands from './common/toThousands.js'
+import compressImg from './image/compressImg.js'
+import isMobile from './is/isMobile.js'
+import isMobileByUa from './is/isMobileByUa.js'
 
-// common
-export * from './common/copy'
-export * from './common/createCountDown'
-export * from './common/createTime'
-export * from './common/formatNumber'
-export * from './common/padZero'
-export * from './common/toThousands'
-export * from './common/delay'
-
-// image
-export * from './image/compressImg'
-
-// is
-export * from './is/isMobile'
-export * from './is/isMobileByUa'
+export {
+    download,
+    scroll,
+    copy,
+    createCountDown,
+    createTime,
+    compressImg,
+    delay,
+    formatNumber,
+    padZero,
+    toThousands,
+    isMobile,
+    isMobileByUa
+}

@@ -1,10 +1,10 @@
 /**
  * 把数字格式化为千分位形式
  * @method toThousands
- * @param {Number} num 要格式化的数字
- * @return {String} 千分位形式的数字
+ * @param {number | string} num 要格式化的数字
+ * @return {string} 千分位形式的数字
  */
-export const toThousands = (num: number | string) => {
+const toThousands = (num: number | string) => {
     let result = ''
     num = (num || 0).toString()
     while (num.length > 3) {
@@ -16,3 +16,5 @@ export const toThousands = (num: number | string) => {
     }
     return result
 }
+
+export default toThousands

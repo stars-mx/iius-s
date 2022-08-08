@@ -5,7 +5,7 @@
  * @param {number} delay     延迟时间(单位：毫秒)
  * @returns {Function}
  */
-export const delay = <T>(fn: Function, delay = 500) => {
+const delay = <T>(fn: Function, delay = 500) => {
     // eslint-disable-next-line
     return (...args: any[]) => new Promise<T>(async (resolve, reject) => {
         const start = +new Date()
@@ -29,3 +29,5 @@ export const delay = <T>(fn: Function, delay = 500) => {
         }
     })
 }
+
+export default delay
