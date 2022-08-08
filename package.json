@@ -1,22 +1,26 @@
 {
   "name": "iius",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "common utilities function map",
-  "main": "dist/lib/index.js",
+  "main": "iius.min.js",
   "scripts": {
-    "build": "npm run clean && tsc-esm",
-    "clean": "rimraf dist",
-    "prepublishOnly": "npm run build"
+    "es": "npm run clean && tsc",
+    "build": "rollup -c",
+    "generate": "npm run es && npm run build",
+    "clean": "rimraf es iius.min.js iius.js",
+    "prepublishOnly": "npm run generate"
   },
   "publishConfig": {
     "access": "public"
   },
   "files": [
-    "dist",
+    "es",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "iius.js",
+    "iius.min.js"
   ],
-  "types": "dist/types/index.d.ts",
+  "types": "es/index.d.ts",
   "keywords": [
     "function",
     "utilities",
@@ -25,13 +29,12 @@
   ],
   "author": "luoob",
   "license": "MIT",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/lunoob/iius"
   },
   "devDependencies": {
-    "@digitak/tsc-esm": "^3.1.3",
+    "@rollup/plugin-typescript": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "eslint": "^8.14.0",
@@ -40,6 +43,9 @@
     "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-promise": "^6.0.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.77.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
   "dependencies": {}
