@@ -15,7 +15,7 @@ const easeInOutCubic = (value) => value < 0.5
  * @param {ScrollCondig} option
  * @returns {IScrollIns}
  */
-function scroll(option = {}) {
+export function scroll(option = {}) {
     option = Object.assign(Object.assign({}, defaultConfig), option);
     let cb = null;
     let targetEl = null;
@@ -59,4 +59,3 @@ function scroll(option = {}) {
         scrollToTop: (fn) => scrollTo(0, fn)
     };
 }
-export default scroll;

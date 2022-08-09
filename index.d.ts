@@ -1,4 +1,13 @@
 /**
+ * 点击下载文件
+ * @param {string | Blob} blob
+ * @param {string} fileName
+ * @param {boolean} isUrl
+ * @returns {void}
+ */
+declare const download: (blob: any, fileName: string, isUrl?: boolean) => void;
+
+/**
 * @fileoverview 滚动处理函数
 * @author Luoob
 */
@@ -10,6 +19,12 @@ interface IScrollIns {
     scrollTo: (distance: number, fn?: () => void) => void;
     scrollToTop: (fn?: () => void) => void;
 }
+/**
+ * 页面滚动
+ * @param {ScrollCondig} option
+ * @returns {IScrollIns}
+ */
+declare function scroll(option?: ScrollCondig): IScrollIns;
 
 /**
  * 复制内容到剪切板
@@ -110,4 +125,4 @@ declare const isMobile: (width?: string) => boolean;
  */
 declare const isMobileByUa: (userAgent?: string) => boolean;
 
-export { IScrollIns, ScrollCondig, compressImg, copy, createCountDown, createTime, delay, formatNumber, isMobile, isMobileByUa, padZero, toThousands };
+export { IScrollIns, ScrollCondig, compressImg, copy, createCountDown, createTime, delay, download, formatNumber, isMobile, isMobileByUa, padZero, scroll, toThousands };

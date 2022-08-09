@@ -1,5 +1,7 @@
 node_modules/
 dist/
-es/
+esm/
+types/
 iius.js
 iius.min.js
+index.d.ts
