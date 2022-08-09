@@ -1,26 +1,29 @@
 {
   "name": "iius",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "common utilities function map",
-  "main": "iius.min.js",
+  "main": "iius.js",
+  "types": "index.d.ts",
+  "module": "esm/index.js",
   "scripts": {
-    "es": "npm run clean && tsc",
+    "es": "tsc",
     "build": "rollup -c",
-    "generate": "npm run es && npm run build",
-    "clean": "rimraf es iius.min.js iius.js",
+    "generate": "npm run clean && npm run es && npm run build",
+    "clean": "rimraf esm types iius.min.js iius.js index.d.ts",
     "prepublishOnly": "npm run generate"
   },
   "publishConfig": {
     "access": "public"
   },
   "files": [
-    "es",
+    "esm",
     "LICENSE",
     "README.md",
     "iius.js",
-    "iius.min.js"
+    "iius.min.js",
+    "types",
+    "index.d.ts"
   ],
-  "types": "es/index.d.ts",
   "keywords": [
     "function",
     "utilities",
@@ -44,6 +47,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.77.2",
+    "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
