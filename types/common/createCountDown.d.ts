@@ -10,7 +10,7 @@
  *  second: string
  * }}
  */
-declare const createCountDown: (time: number) => {
+export declare const createCountDown: (time: number) => {
     year: string | number;
     month: string | number;
     day: string | number;
@@ -18,4 +18,3 @@ declare const createCountDown: (time: number) => {
     minute: string | number;
     second: string | number;
 };
-export default createCountDown;

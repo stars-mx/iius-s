@@ -14,7 +14,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * @param {number} delay     延迟时间(单位：毫秒)
  * @returns {Function}
  */
-const delay = (fn, delay = 500) => {
+export const delay = (fn, delay = 500) => {
     // eslint-disable-next-line
     return (...args) => new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
         const start = +new Date();
@@ -40,4 +40,3 @@ const delay = (fn, delay = 500) => {
         }
     }));
 };
-export default delay;

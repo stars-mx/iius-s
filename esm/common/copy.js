@@ -3,7 +3,7 @@
  * @param {string} val
  * @returns {any}
  */
-const copy = () => {
+export const copy = () => {
     let el = null;
     const id = 'copy-id';
     return {
@@ -34,4 +34,3 @@ const copy = () => {
         }
     };
 };
-export default copy;

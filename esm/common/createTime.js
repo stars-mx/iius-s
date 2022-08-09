@@ -4,7 +4,7 @@
  * @param {string} unit
  * @returns {number}
  */
-const createTime = (option, unit = 'millisecond') => {
+export const createTime = (option, unit = 'millisecond') => {
     const { hour = 0, minute = 0, second = 0 } = option;
     const times = unit === 'millisecond' ? 1000 : 1;
     let totalTime = 0;
@@ -19,4 +19,3 @@ const createTime = (option, unit = 'millisecond') => {
     }
     return totalTime;
 };
-export default createTime;

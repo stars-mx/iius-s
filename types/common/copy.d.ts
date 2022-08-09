@@ -3,7 +3,6 @@
  * @param {string} val
  * @returns {any}
  */
-declare const copy: () => {
+export declare const copy: () => {
     exec(val: string): boolean;
 };
-export default copy;

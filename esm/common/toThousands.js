@@ -4,7 +4,7 @@
  * @param {number | string} num 要格式化的数字
  * @return {string} 千分位形式的数字
  */
-const toThousands = (num) => {
+export const toThousands = (num) => {
     let result = '';
     num = (num || 0).toString();
     while (num.length > 3) {
@@ -16,4 +16,3 @@ const toThousands = (num) => {
     }
     return result;
 };
-export default toThousands;

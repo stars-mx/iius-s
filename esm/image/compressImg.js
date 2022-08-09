@@ -12,7 +12,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * @param {file} file 文件
  * @param {number} quality 图片质量(取值0 - 1之间默认0.92)
  */
-const compressImg = (file, quality) => {
+export const compressImg = (file, quality) => {
     let qualitys = 0.52;
     if (parseInt((file.size / 1024).toFixed(2)) < 1024) {
         qualitys = 0.85;
@@ -120,4 +120,3 @@ const compressImg = (file, quality) => {
         }
     });
 };
-export default compressImg;

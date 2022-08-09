@@ -3,5 +3,4 @@
  * @param {string} width
   * @returns {any}
   */
-declare const isMobile: (width?: string) => boolean;
-export default isMobile;
+export declare const isMobile: (width?: string) => boolean;

@@ -6,5 +6,4 @@
  * @param {number} num 要格式化的数字
  * @return {string} 格式化后的数字
  */
-declare const formatNumber: (num: string | number) => string | number;
-export default formatNumber;
+export declare const formatNumber: (num: string | number) => string | number;

@@ -3,11 +3,9 @@
  * @param {number} n
  * @returns {string | number}
  */
-const padZero = (n: number) => {
+export const padZero = (n: number) => {
     if (!Number.isInteger(n)) {
         return n
     }
     return (n < 10 ? `0${n}` : String(n))
 }
-
-export default padZero

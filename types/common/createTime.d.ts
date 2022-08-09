@@ -10,5 +10,5 @@ declare type Unit = 'millisecond' | 'second';
  * @param {string} unit
  * @returns {number}
  */
-declare const createTime: (option: Option, unit?: Unit) => number;
-export default createTime;
+export declare const createTime: (option: Option, unit?: Unit) => number;
+export {};

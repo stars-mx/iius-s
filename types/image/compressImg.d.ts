@@ -3,5 +3,4 @@
  * @param {file} file 文件
  * @param {number} quality 图片质量(取值0 - 1之间默认0.92)
  */
-declare const compressImg: (file: any, quality: number) => Promise<unknown>;
-export default compressImg;
+export declare const compressImg: (file: any, quality: number) => Promise<unknown>;

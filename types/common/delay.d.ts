@@ -5,5 +5,4 @@
  * @param {number} delay     延迟时间(单位：毫秒)
  * @returns {Function}
  */
-declare const delay: <T>(fn: Function, delay?: number) => (...args: any[]) => Promise<T>;
-export default delay;
+export declare const delay: <T>(fn: Function, delay?: number) => (...args: any[]) => Promise<T>;
