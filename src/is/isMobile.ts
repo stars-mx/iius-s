@@ -1,4 +1,4 @@
-import isMobileByUa from './isMobileByUa.js'
+import isMobileByUa from './isMobileByUa'
 
 /**
   * 是否移动端

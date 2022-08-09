@@ -1,5 +1,4 @@
-import padZero from './padZero'
-
+import padZero from './padZero';
 /**
  * 创建倒计时
  * @param {number} time 毫秒数
@@ -12,7 +11,7 @@ import padZero from './padZero'
  *  second: string
  * }}
  */
-const createCountDown = (time: number) => {
+const createCountDown = (time) => {
     const resetTime = {
         year: padZero(Math.floor(time / (1000 * 60 * 60 * 24 * 30 * 12))),
         month: padZero(Math.floor(time / (1000 * 60 * 60 * 24 * 30))),
@@ -20,8 +19,7 @@ const createCountDown = (time: number) => {
         hour: padZero(Math.floor((time / (1000 * 60 * 60)) % 24)),
         minute: padZero(Math.floor((time / (1000 * 60)) % 60)),
         second: padZero(Math.floor((time / 1000) % 60))
-    }
-    return resetTime
-}
-
-export default createCountDown
+    };
+    return resetTime;
+};
+export default createCountDown;
