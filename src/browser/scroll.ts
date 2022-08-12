@@ -36,6 +36,12 @@ export function scroll (option: ScrollCondig = {}): IScrollIns {
 
     targetEl = document.documentElement
 
+    // weixin 内置浏览器
+    // 正常情况下 document.documentElement 的 scrollTop 为 0
+    if (targetEl.scrollTop <= 0) {
+        targetEl = document.body
+    }
+
     if (option.target) {
         targetEl = document.querySelector(option.target)
         if (!targetEl) {

@@ -1,6 +1,6 @@
 {
   "name": "iius",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "common utilities function map",
   "main": "iius.js",
   "types": "index.d.ts",
