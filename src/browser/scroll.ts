@@ -24,6 +24,21 @@ const easeInOutCubic = (value: number) => value < 0.5
     : 1 - cubic((1 - value) * 2) / 2
 
 /**
+ * 检查元素是否及格
+ * @param {HTMLElement} target
+ * @returns {HTMLElement}
+ */
+function inspectTarget (target: HTMLElement) {
+    // weixin 内置浏览器
+    // 正常情况下 document.documentElement 的 scrollTop 为 0
+    if (target.scrollTop <= 0) {
+        target = document.body
+    }
+
+    return target
+}
+
+/**
  * 页面滚动
  * @param {ScrollCondig} option
  * @returns {IScrollIns}
@@ -36,12 +51,6 @@ export function scroll (option: ScrollCondig = {}): IScrollIns {
 
     targetEl = document.documentElement
 
-    // weixin 内置浏览器
-    // 正常情况下 document.documentElement 的 scrollTop 为 0
-    if (targetEl.scrollTop <= 0) {
-        targetEl = document.body
-    }
-
     if (option.target) {
         targetEl = document.querySelector(option.target)
         if (!targetEl) {
@@ -51,7 +60,7 @@ export function scroll (option: ScrollCondig = {}): IScrollIns {
 
     const scrollTo = (distance: number, fn?: () => void) => {
         cb = fn || (() => {})
-        const iel = targetEl
+        const iel = inspectTarget(targetEl)
         const beginTime = Date.now()
         const beginValue = iel.scrollTop
         const interval = Math.abs(beginValue - distance)
