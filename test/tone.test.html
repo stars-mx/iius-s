@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1,minimum-scale=1"
+		/>
+		<title>Tone Mode</title>
+		<style>
+			body {
+				transition: background-color 300ms;
+			}
+			html.dark body {
+				background-color: #333;
+			}
+
+			html.red body {
+				background-color: red;
+			}
+
+			html.green body {
+				background-color: green;
+			}
+
+			html.blue body {
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>切换颜色</h1>
+        <p id="curTone"></p>
+		<button onclick="setMode('Red')">red</button>
+		<button onclick="setMode('Green')">green</button>
+		<button onclick="setMode('Blue')">blue</button>
+		<button onclick="setMode('Light')">light</button>
+		<button onclick="setMode('Dark')">dark</button>
+		<button onclick="setMode('System')">system</button>
+		<button onclick="onCancel()">取消监听</button>
+	</body>
+</html>
+<script src="../iius.js"></script>
+<script>
+    const curToneEl = document.querySelector('#curTone')
+	const { init, getMode, setMode, cancel } = iius.createTone({
+		key: 'luoob-test-tone',
+		tones: ['Red', 'Green', 'Blue'],
+        onUpdate(tone) {
+            curToneEl.textContent = tone
+        }
+	})
+
+	init()
+
+    function onCancel() {
+        cancel()
+    }
+</script>

@@ -1,3 +1,8 @@
+/**
+ * 获取 IE 浏览器版本号
+ * @param {window.navigator.userAgent} userAgent
+ * @returns {any}
+ */
 export function getIEVsersion (userAgent = window.navigator.userAgent) {
     let version
     // 判断是否为小于 IE11 的浏览器

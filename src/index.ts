@@ -1,5 +1,6 @@
 export * from './browser/download'
 export * from './browser/scroll'
+export * from './browser/createTone'
 export * from './common/copy'
 export * from './common/createCountDown'
 export * from './common/createTime'

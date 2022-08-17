@@ -13,37 +13,37 @@ export interface IScrollIns {
     scrollToTop: (fn?: () => void) => void
 }
 
-const defaultConfig: ScrollCondig = {
-    target: '',
-    speed: 100 // 值越小，速度越快
-}
-
-const cubic = (value: number) => Math.pow(value, 3)
-const easeInOutCubic = (value: number) => value < 0.5
-    ? cubic(value * 2) / 2
-    : 1 - cubic((1 - value) * 2) / 2
-
-/**
- * 检查元素是否及格
- * @param {HTMLElement} target
- * @returns {HTMLElement}
- */
-function inspectTarget (target: HTMLElement) {
-    // weixin 内置浏览器
-    // 正常情况下 document.documentElement 的 scrollTop 为 0
-    if (target.scrollTop <= 0) {
-        target = document.body
-    }
-
-    return target
-}
-
 /**
  * 页面滚动
  * @param {ScrollCondig} option
  * @returns {IScrollIns}
  */
 export function scroll (option: ScrollCondig = {}): IScrollIns {
+    const defaultConfig: ScrollCondig = {
+        target: '',
+        speed: 100 // 值越小，速度越快
+    }
+
+    const cubic = (value: number) => Math.pow(value, 3)
+    const easeInOutCubic = (value: number) => value < 0.5
+        ? cubic(value * 2) / 2
+        : 1 - cubic((1 - value) * 2) / 2
+
+    /**
+     * 检查元素是否及格
+     * @param {HTMLElement} target
+     * @returns {HTMLElement}
+     */
+    function inspectTarget (target: HTMLElement) {
+        // weixin 内置浏览器
+        // 正常情况下 document.documentElement 的 scrollTop 为 0
+        if (target.scrollTop <= 0) {
+            target = document.body
+        }
+
+        return target
+    }
+
     option = { ...defaultConfig, ...option }
 
     let cb: any = null
