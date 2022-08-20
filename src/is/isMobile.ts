@@ -1,14 +1,14 @@
 import { isMobileByUa } from './isMobileByUa'
 
 /**
-  * 是否移动端
- * @param {string} width
-  * @returns {any}
-  */
-export const isMobile = (width = '768') => {
+ * 当前设备是否移动端
+ * @param {number} width
+ * @returns {boolean}
+ */
+export function isMobile (width = 768) {
     const isMobileUa = isMobileByUa()
     if (isMobileUa) {
         return true
     }
-    return document.documentElement.clientWidth <= parseInt(width)
+    return document.documentElement.clientWidth <= width
 }

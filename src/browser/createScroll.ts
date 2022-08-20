@@ -9,8 +9,8 @@ export interface ScrollCondig {
 }
 
 export interface IScrollIns {
-    scrollTo: (distance: number, fn?: () => void) => void
-    scrollToTop: (fn?: () => void) => void
+    scrollTo: (distance: number, fn?: () => any) => void
+    scrollToTop: (fn?: () => any) => void
 }
 
 /**
@@ -18,7 +18,7 @@ export interface IScrollIns {
  * @param {ScrollCondig} option
  * @returns {IScrollIns}
  */
-export function scroll (option: ScrollCondig = {}): IScrollIns {
+export function createScroll (option: ScrollCondig = {}): IScrollIns {
     const defaultConfig: ScrollCondig = {
         target: '',
         speed: 100 // 值越小，速度越快

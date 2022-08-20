@@ -1,17 +1,28 @@
+import { isURL } from '../is/isURL'
+import { isNil, isString } from 'lodash-es'
+
 /**
  * 点击下载文件
  * @param {string | Blob} blob
  * @param {string} fileName
- * @param {boolean} isUrl
+ * @param {boolean} _isURL
  * @returns {void}
  */
-export const download = (blob: any, fileName: string, isUrl = false) => {
-    let downloadUrl: any = ''
-    if (isUrl && typeof blob === 'string') {
-        downloadUrl = blob
-    } else {
-        downloadUrl = window.URL.createObjectURL(blob)
-    }
+export function download (data: string | Blob, fileName: string, _isURL?: boolean) {
+    const downloadUrl = (() => {
+        // 如果 isURL 没传参或者传入 null
+        if (isString(data)) {
+            if (isNil(_isURL)) {
+                _isURL = isURL(data)
+            }
+
+            if (_isURL) {
+                return data
+            }
+        }
+        return window.URL.createObjectURL(data as Blob)
+    })()
+
     const link = document.createElement('a')
     link.setAttribute('name', 'download-file')
     link.target = '_target'

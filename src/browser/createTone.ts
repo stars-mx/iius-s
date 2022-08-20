@@ -8,19 +8,19 @@ type DefaultTone = 'Dark' | 'Light' | 'System'
 type CreateToneOption<U> = {
     key: string
     tones: U[]
-    onUpdate: (tone: string) => void
+    onUpdate?: (tone: string) => void
 }
 
 type IsRecord<V extends string> = Record<`is${V}`, boolean>
 
-type ReturnType<S extends string> = IsRecord<S> & IsRecord<DefaultTone> & {
+type ToneManager<S extends string> = IsRecord<S> & IsRecord<DefaultTone> & {
     getMode: () => S,
     setMode: (tone: S) => void
     init: () => void
     cancel: () => void
 }
 
-export function createTone<T extends string> (option: CreateToneOption<T>): ReturnType<T> | false {
+export function createTone<T extends string> (option: CreateToneOption<T>): ToneManager<T> | false {
     type Tone = T | DefaultTone
 
     let oldTone = ''
@@ -141,7 +141,7 @@ export function createTone<T extends string> (option: CreateToneOption<T>): Retu
             },
             ...isToneModeObj,
             ...isInnerModeObj
-        } as ReturnType<T>
+        } as ToneManager<T>
     }
 
     return false
