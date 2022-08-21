@@ -1,23 +1,39 @@
+export type FileLimit = {
+    file: File
+    origin?: File
+    beforeSrc?: string
+    afterSrc?: string
+    beforeSize?: number
+    afterSize?: number
+}
+
 /**
  * 压缩图片方法
- * @param {file} file 文件
- * @param {number} quality 图片质量(取值0 - 1之间默认0.92)
+ * @param {File} file 文件
+ * @param {number} quality 图片质量(取值0 - 1之间)
+ * @returns {Promise}
  */
-export const compressImg = (file: any, quality: number) => {
+export function compressImg (file: File, quality?: number, limit: number = 300) {
     let qualitys = 0.52
-    if (parseInt((file.size / 1024).toFixed(2)) < 1024) {
-        qualitys = 0.85
-    }
-    if (5 * 1024 < parseInt((file.size / 1024).toFixed(2))) {
+    const realSize = parseInt((file.size / 1024).toFixed(2))
+
+    // 5MB
+    if (realSize < 5 * 1024) {
         qualitys = 0.92
+    }
+
+    // 1MB
+    if (realSize < 1024) {
+        qualitys = 0.85
     }
     if (quality) {
         qualitys = quality
     }
+    qualitys = Math.max(0, Math.min(1, qualitys))
     return new Promise(resolve => {
-        console.log(file)
         // @ts-ignore
-        if ((file.size / 1024).toFixed(2) < 300) {
+        // 小于 limit kb 则不进行压缩
+        if ((file.size / 1024).toFixed(2) < limit) {
             resolve({
                 file
             })
@@ -79,8 +95,8 @@ export const compressImg = (file: any, quality: number) => {
                     }
                     canvas.width = targetWidth
                     canvas.height = targetHeight
-                    context?.clearRect(0, 0, targetWidth, targetHeight)
-                    context?.drawImage(image, 0, 0, targetWidth, targetHeight) // 绘制 canvas
+                    context!.clearRect(0, 0, targetWidth, targetHeight)
+                    context!.drawImage(image, 0, 0, targetWidth, targetHeight) // 绘制 canvas
                     const canvasURL = canvas.toDataURL('image/jpeg', qualitys)
                     const buffer = atob(canvasURL.split(',')[1])
                     let length = buffer.length
@@ -91,22 +107,22 @@ export const compressImg = (file: any, quality: number) => {
                     const miniFile = new File([bufferArray], file.name, {
                         type: 'image/jpeg'
                     })
-                    console.log({
-                        file: miniFile,
-                        origin: file,
-                        beforeSrc: src,
-                        afterSrc: canvasURL,
-                        beforeKB: Number((file.size / 1024).toFixed(2)),
-                        afterKB: Number((miniFile.size / 1024).toFixed(2)),
-                        qualitys
-                    })
+                    // console.log({
+                    //     file: miniFile,
+                    //     origin: file,
+                    //     beforeSrc: src,
+                    //     afterSrc: canvasURL,
+                    //     beforeSize: Number((file.size / 1024).toFixed(2)),
+                    //     afterSize: Number((miniFile.size / 1024).toFixed(2)),
+                    //     qualitys
+                    // })
                     resolve({
                         file: miniFile,
                         origin: file,
                         beforeSrc: src,
                         afterSrc: canvasURL,
-                        beforeKB: Number((file.size / 1024).toFixed(2)),
-                        afterKB: Number((miniFile.size / 1024).toFixed(2))
+                        beforeSize: Number((file.size / 1024).toFixed(2)),
+                        afterSize: Number((miniFile.size / 1024).toFixed(2))
                     })
                 }
                 image.src = src

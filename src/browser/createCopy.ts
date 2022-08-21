@@ -1,19 +1,18 @@
 /**
  * 复制内容到剪切板
- * @param {string} val
- * @returns {any}
+ * @returns {{exec: (val: string) => boolean}}
  */
-export const copy = () => {
-    let el: any = null
-    const id = 'copy-id'
+export const createCopy = () => {
+    let el: null | HTMLInputElement = null
+    const id = '[iius-copy]:id'
 
     return {
         exec (val: string) {
             let copyInput = el
-            if (!copyInput) {
-                const inputEl = document.getElementById(id)
+            if (copyInput == null) {
+                const inputEl = document.getElementById(id) as HTMLInputElement
                 if (inputEl != null) {
-                    el = inputEl
+                    copyInput = el = inputEl
                 } else {
                     copyInput = document.createElement('input')
                     copyInput.id = id
@@ -31,6 +30,12 @@ export const copy = () => {
                 return true
             }
             return false
+        },
+        remove () {
+            if (el != null) {
+                el.remove()
+                el = null
+            }
         }
     }
 }
