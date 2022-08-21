@@ -2,6 +2,5 @@ node_modules/
 dist/
 esm/
 types/
-iius.js
-iius.min.js
+iius.*
 index.d.ts

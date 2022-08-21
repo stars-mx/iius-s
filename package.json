@@ -1,69 +1,81 @@
 {
-  "name": "iius",
-  "version": "0.0.19",
-  "description": "common utilities function map",
-  "main": "iius.js",
-  "types": "index.d.ts",
-  "module": "iius.mjs",
-  "exports": {
-    "import": "./iius.mjs",
-    "default": "./iius.js"
-  },
-  "unpkg": "iius.min.js",
-  "scripts": {
-    "do": "node --loader ts-node/esm",
-    "es": "tsc",
-    "build": "rollup -c",
-    "generate": "npm run clean && npm run es && npm run build",
-    "clean": "rimraf iius.* index.d.ts types",
-    "update:entry": "node scripts/updateEntry.js",
-    "prepublishOnly": "npm run generate"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "LICENSE",
-    "iius.js",
-    "iius.min.js",
-    "iius.mjs",
-    "index.d.ts"
-  ],
-  "keywords": [
-    "function",
-    "utilities",
-    "typescript",
-    "lodash"
-  ],
-  "author": "luoob",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lunoob/iius"
-  },
-  "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.4",
-    "@types/lodash-es": "^4.17.6",
-    "@types/node": "^18.6.5",
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
-    "cross-spawn": "^7.0.3",
-    "eslint": "^8.14.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "fs-extra": "^10.1.0",
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.77.2",
-    "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-dts": "^4.2.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.32.1",
-    "ts-node": "^10.9.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
-  }
+    "name": "iius",
+    "version": "0.0.19",
+    "description": "common utilities function map",
+    "main": "iius.js",
+    "types": "index.d.ts",
+    "module": "iius.mjs",
+    "exports": {
+        "import": "./iius.mjs",
+        "default": "./iius.js"
+    },
+    "unpkg": "iius.min.js",
+    "scripts": {
+        "do": "node --loader ts-node/esm",
+        "es": "tsc",
+        "build": "rollup -c",
+        "generate": "npm run clean && npm run es && npm run build",
+        "clean": "rimraf iius.* index.d.ts types",
+        "update:entry": "node scripts/updateEntry.js",
+        "prepublishOnly": "npm run generate",
+        "prepare": "husky install",
+        "cz": "git-cz"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "LICENSE",
+        "iius.js",
+        "iius.min.js",
+        "iius.mjs",
+        "index.d.ts"
+    ],
+    "keywords": [
+        "function",
+        "utilities",
+        "typescript",
+        "lodash"
+    ],
+    "author": "luoob",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lunoob/iius"
+    },
+    "devDependencies": {
+        "@commitlint/config-conventional": "^17.0.3",
+        "@rollup/plugin-typescript": "^8.3.4",
+        "@types/lodash-es": "^4.17.6",
+        "@types/node": "^18.6.5",
+        "@typescript-eslint/eslint-plugin": "^5.22.0",
+        "@typescript-eslint/parser": "^5.22.0",
+        "aflower-cli": "^0.0.9",
+        "commitizen": "^4.2.5",
+        "cross-spawn": "^7.0.3",
+        "eslint": "^8.14.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-n": "^15.2.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "fs-extra": "^10.1.0",
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
+        "lodash": "^4.17.21",
+        "lodash-es": "^4.17.21",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.77.2",
+        "rollup-plugin-delete": "^2.0.0",
+        "rollup-plugin-dts": "^4.2.2",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript2": "^0.32.1",
+        "ts-node": "^10.9.1",
+        "tslib": "^2.4.0",
+        "typescript": "^4.7.4"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    }
 }
