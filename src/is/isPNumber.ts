@@ -1,4 +1,4 @@
-import { isString } from 'lodash-es'
+import { isString } from '../helpers'
 
 /**
  * 是否正确的手机号码格式

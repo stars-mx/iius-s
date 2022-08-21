@@ -1,4 +1,4 @@
-import { isString } from 'lodash-es'
+import { isString } from '../helpers'
 
 /**
  * 通过检测设备 ua

@@ -1,5 +1,5 @@
 import { padZero } from './padZero'
-import { isString, isDate } from 'lodash-es'
+import { isDate, isString } from '../helpers'
 
 export type CountDown = {
     year: string

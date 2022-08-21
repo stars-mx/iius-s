@@ -1,5 +1,3 @@
-import { set } from 'lodash-es'
-
 /**
  * 将 Blob 转换为 File
  * @param {Blob} theBlob
@@ -7,7 +5,7 @@ import { set } from 'lodash-es'
  * @returns {File}
  */
 export function blobToFile (theBlob: Blob, fileName: string) {
-    set(theBlob, 'lastModifiedDate', new Date())
-    set(theBlob, 'name', fileName)
+    Reflect.set(theBlob, 'lastModifiedDate', new Date())
+    Reflect.set(theBlob, 'name', fileName)
     return theBlob
 }

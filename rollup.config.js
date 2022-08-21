@@ -1,6 +1,7 @@
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import del from 'rollup-plugin-delete'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { defineConfig } from 'rollup'
 import { terser } from 'rollup-plugin-terser'
 
@@ -9,7 +10,7 @@ const publicConfig = {
     name: 'iius'
 }
 
-const noDeclarationTsPlg = typescript({
+const noDeclarationTsPlg = () => typescript({
     declaration: false,
     declarationDir: null
 })
@@ -22,7 +23,8 @@ const config = defineConfig([
             { file: 'iius.min.js', ...publicConfig, plugins: [terser()] }
         ],
         plugins: [
-            noDeclarationTsPlg
+            noDeclarationTsPlg(),
+            nodeResolve()
         ]
     },
     {
@@ -32,7 +34,8 @@ const config = defineConfig([
             format: 'es'
         },
         plugins: [
-            noDeclarationTsPlg
+            noDeclarationTsPlg(),
+            nodeResolve()
         ]
     },
     {

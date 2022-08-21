@@ -1,4 +1,4 @@
-import { isNull } from 'lodash-es'
+import { isNull } from '../helpers'
 
 /**
  * 将 DataURL 转换为 Blob
