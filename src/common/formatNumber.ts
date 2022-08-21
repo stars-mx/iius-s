@@ -8,7 +8,7 @@ import { toThousands } from './toThousands'
  * @param {number} num 要格式化的数字
  * @return {string} 格式化后的数字
  */
-export const formatNumber = (num: string | number) => {
+export function formatNumber (num: string | number) {
     num = Number(num)
     if (isNaN(num)) {
         return num

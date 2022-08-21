@@ -3,9 +3,9 @@
  * @param {number} n
  * @returns {string | number}
  */
-export const padZero = (n: number) => {
+export function padZero (n: number) {
     if (!Number.isInteger(n)) {
-        return n
+        return String(n)
     }
     return (n < 10 ? `0${n}` : String(n))
 }

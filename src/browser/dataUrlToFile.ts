@@ -1,5 +1,5 @@
 import { blobToFile } from './blobToFile'
-import { dataURLtoBlob } from './dataURLtoBlob'
+import { dataURLToBlob } from './dataURLToBlob'
 
 /**
  * DataURL 转 File 对象
@@ -7,7 +7,7 @@ import { dataURLtoBlob } from './dataURLtoBlob'
  * @param {string} fileName
  * @returns {File}
  */
-export function dataUrlToFile (dataURL: string, fileName: string) {
-    const tempBlob = dataURLtoBlob(dataURL)
+export function dataURLToFile (dataURL: string, fileName: string) {
+    const tempBlob = dataURLToBlob(dataURL)
     return blobToFile(tempBlob, fileName)
 }

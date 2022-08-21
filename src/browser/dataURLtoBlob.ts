@@ -5,7 +5,7 @@ import { isNull } from 'lodash-es'
  * @param {string} dataUrl
  * @returns {Blob}
  */
-export function dataURLtoBlob (dataUrl: string) {
+export function dataURLToBlob (dataUrl: string) {
     const arr = dataUrl.split(',')
     const mines = arr[0].match(/:(.*?);/)
 
