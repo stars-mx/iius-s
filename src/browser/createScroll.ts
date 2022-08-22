@@ -35,6 +35,9 @@ export function createScroll (option: ScrollCondig = {}): IScrollIns {
      * @returns {HTMLElement}
      */
     function inspectTarget (target: HTMLElement) {
+        if (option.target) {
+            return target
+        }
         // weixin 内置浏览器
         // 正常情况下 document.documentElement 的 scrollTop 为 0
         if (target.scrollTop <= 0) {

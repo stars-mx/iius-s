@@ -78,8 +78,6 @@ export function createTone<T extends string> (option: CreateToneOption<T>): Tone
         }
 
         const tone = isDarkMode() ? InnerTone.Dark : InnerTone.Light
-        // 设置本地缓存
-        localStorage.setItem(option.key, tone)
         // 修改 class
         updateClass(tone)
     }

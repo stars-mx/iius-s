@@ -1,7 +1,7 @@
 export type DownloadObject = {
-    downloadWithFile: (file: File) => void
-    downloadWithBlob: (blob: Blob) => void
-    downloadWithDataURL: (dataURL: string) => void
+    downloadWithFile: (file: File, fileName: string) => void
+    downloadWithBlob: (blob: Blob, fileName: string) => void
+    downloadWithDataURL: (dataURL: string, fileName: string) => void
 }
 
 /**
@@ -9,8 +9,8 @@ export type DownloadObject = {
  * @param {string} fileName
  * @returns {void}
  */
-export function createDownload (fileName: string): DownloadObject {
-    function download (_url: string) {
+export function createDownload (fileName?: string): DownloadObject {
+    function download (_url: string, fileName: string) {
         const link = document.createElement('a')
         link.setAttribute('name', 'download-file')
         link.target = '_target'
@@ -21,16 +21,16 @@ export function createDownload (fileName: string): DownloadObject {
     }
 
     return {
-        downloadWithFile (file: File) {
+        downloadWithFile (file: File, _fileName: string) {
             const url = window.URL.createObjectURL(file)
-            return download(url)
+            return download(url, _fileName)
         },
-        downloadWithBlob (blob: Blob) {
+        downloadWithBlob (blob: Blob, _fileName: string) {
             const url = window.URL.createObjectURL(blob)
-            return download(url)
+            return download(url, _fileName)
         },
-        downloadWithDataURL (dataURL: string) {
-            return download(dataURL)
+        downloadWithDataURL (dataURL: string, _fileName: string) {
+            return download(dataURL, _fileName)
         }
     }
 }
