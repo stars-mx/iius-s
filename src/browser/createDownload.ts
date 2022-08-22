@@ -10,26 +10,26 @@ export type DownloadObject = {
  * @returns {void}
  */
 export function createDownload (fileName?: string): DownloadObject {
-    function download (_url: string, fileName: string) {
+    function download (_url: string, _fileName?: string) {
         const link = document.createElement('a')
         link.setAttribute('name', 'download-file')
         link.target = '_target'
         link.rel = 'noopener'
-        link.download = fileName
+        link.download = _fileName || fileName || 'undefined'
         link.href = _url
         link.click()
     }
 
     return {
-        downloadWithFile (file: File, _fileName: string) {
+        downloadWithFile (file: File, _fileName?: string) {
             const url = window.URL.createObjectURL(file)
             return download(url, _fileName)
         },
-        downloadWithBlob (blob: Blob, _fileName: string) {
+        downloadWithBlob (blob: Blob, _fileName?: string) {
             const url = window.URL.createObjectURL(blob)
             return download(url, _fileName)
         },
-        downloadWithDataURL (dataURL: string, _fileName: string) {
+        downloadWithDataURL (dataURL: string, _fileName?: string) {
             return download(dataURL, _fileName)
         }
     }
