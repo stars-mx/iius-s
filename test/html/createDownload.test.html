@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1,minimum-scale=1"
+		/>
+		<title>createDownload</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://kit.fontawesome.com/c3c837a9d6.js"></script>
+        <style>
+            body {
+                min-height: 100vh;
+            }
+            .download-button {
+                width: 10em;
+            }
+            .iius-logo {
+                width: 150px;
+                height: 150px;
+            }
+        </style>
+	</head>
+	<body class="flex items-center justify-center flex-col">
+        <img class="iius-logo rounded-full mx-auto mb-28 border-2 p-1" src="https://i.ibb.co/cLQHzdm/image.png">
+        <ul class="flex flex-col md:flex-row">
+            <li class="mr-4 mb-4 md:mb-0">
+                <button class="download-button transition-all py-3 px-5 rounded font-bold text-white 
+                    bg-cyan-500 shadow hover:shadow-lg hover:bg-cyan-600"
+                    onclick="downWithFile()">
+                    <i class="fa-solid fa-download mr-1"></i>
+                    File
+                </button>
+            </li>
+            <li class="mr-4 mb-4 md:mb-0">
+                <button class="download-button transition-all py-3 px-5 rounded font-bold text-white 
+                    bg-cyan-500 shadow hover:shadow-lg hover:bg-cyan-600"
+                    onclick="downWithBlob()">
+                    <i class="fa-solid fa-download mr-1"></i>
+                    Blob
+                </button>
+            </li>
+            <li>
+                <button class="download-button transition-all py-3 px-5 rounded font-bold text-white 
+                    bg-cyan-500 shadow hover:shadow-lg hover:bg-cyan-600"
+                    onclick="downWithDataURL()">
+                    <i class="fa-solid fa-download mr-1"></i>
+                    DataURL
+                </button>
+            </li>
+        </ul>
+    </body>
+</html>
+<script src="../../iius.min.js"></script>
+<script>
+    const download = iius.createDownload('iius_logo.png')
+    function getImageDataURL(_src) {
+        return new Promise((resolve) => {
+            const img = new Image()
+            img.setAttribute('crossOrigin', 'anonymous')
+
+            img.onload = function() {
+                const canvas = document.createElement('canvas')
+                canvas.width = img.width
+                canvas.height = img.height
+                const ctx = canvas.getContext('2d')
+                ctx.drawImage(img, 0, 0, img.width, img.height)
+                const url = canvas.toDataURL('image/png')
+
+                resolve(url)
+            }
+
+            img.src = _src
+        })
+    }
+
+    const iiusLogoSrc = 'https://i.ibb.co/cLQHzdm/image.png'
+
+    async function downWithFile() {
+        const dataURL = await getImageDataURL(iiusLogoSrc)
+        download.downloadWithFile(
+            iius.dataURLToFile(dataURL)
+        )
+    }
+
+    async function downWithBlob() {
+        const dataURL = await getImageDataURL(iiusLogoSrc)
+
+        download.downloadWithBlob(
+            iius.dataURLToBlob(dataURL)
+        )
+    }
+
+    async function downWithDataURL() {
+        const dataURL = await getImageDataURL(iiusLogoSrc)
+        download.downloadWithDataURL(dataURL)
+    }
+</script>

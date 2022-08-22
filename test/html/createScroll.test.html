@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>createScroll</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://kit.fontawesome.com/c3c837a9d6.js"></script>
+        <style>
+            body {
+                min-height: 100vh;
+            }
+            .color-scale-wrapper {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+            .violet-section {
+                min-height: 100px;
+            }
+        </style>
+	</head>
+	<body>
+        <div class="color-scale-wrapper">
+            <div class="violet-section bg-violet-50"></div>
+            <div class="violet-section bg-violet-100"></div>
+            <div class="violet-section bg-violet-200"></div>
+            <div class="violet-section bg-violet-300"></div>
+            <div class="violet-section bg-violet-400"></div>
+            <div class="violet-section bg-violet-500"></div>
+            <div class="violet-section bg-violet-600"></div>
+            <div class="violet-section bg-violet-700"></div>
+            <div class="violet-section bg-violet-800"></div>
+            <div class="violet-section bg-violet-900"></div>
+        </div>
+        <div class="color-scale-wrapper">
+            <div class="violet-section bg-purple-50"></div>
+            <div class="violet-section bg-purple-100"></div>
+            <div class="violet-section bg-purple-200"></div>
+            <div class="violet-section bg-purple-300"></div>
+            <div class="violet-section bg-purple-400"></div>
+            <div class="violet-section bg-purple-500"></div>
+            <div class="violet-section bg-purple-600"></div>
+            <div class="violet-section bg-purple-700"></div>
+            <div class="violet-section bg-purple-800"></div>
+            <div class="violet-section bg-purple-900"></div>
+        </div>
+
+        <div class="action-icon-wrapper fixed bottom-6 right-6">
+            <div class="back-to-top transition-all action-icon cursor-pointer leading-none text-center
+                p-2 text-2xl rounded bg-green-400 text-white hover:bg-green-500 mb-5"
+                id="toTop"
+                onclick="backToTop()">
+                <i class="fa-solid fa-angle-up"></i>
+            </div>
+            <div class="scroll-aim transition-all action-icon cursor-pointer leading-none text-center
+                p-2 text-2xl rounded bg-green-400 text-white hover:bg-green-500"
+                onclick="scrollToAim()">
+                <i class="fa-solid fa-crosshairs"></i>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="../../iius.min.js"></script>
+<script>
+    const scrollToTopEl = document.querySelector('#toTop')
+    function watchWindowScroll() {
+        if (document.documentElement.scrollTop > 150) {
+            scrollToTopEl.style.transform = 'translate3d(0, 0, 0)'
+        } else {
+            scrollToTopEl.style.transform = 'translate3d(200%, 0, 0)'
+        }
+    }
+    watchWindowScroll()
+    window.addEventListener('scroll', watchWindowScroll)
+
+    const scroller = iius.createScroll({
+        speed: 300,
+        target: 'html'
+    })
+
+    function backToTop() {
+        scroller.scrollToTop(function() {
+            alert('Reach Top')
+        })
+    }
+
+    function scrollToAim() {
+        scroller.scrollTo(1000, function() {
+            alert('Reach 500px top')
+        })
+    }
+</script>

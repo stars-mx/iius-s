@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1,minimum-scale=1"
+		/>
+		<title>createTone</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://kit.fontawesome.com/c3c837a9d6.js"></script>
+		<style>
+			html {
+				--c-bg: #fff;
+				--c-border: rgb(15, 23, 42, 0.05);
+				--c-title: rgb(15, 23, 42);
+				--c-detail: rgb(100, 116, 139);
+			}
+			html.dark {
+				--c-bg: rgb(30, 41, 59);
+				--c-title: #fff;
+				--c-detail: rgb(148, 163, 184);
+			}
+			html.red {
+				--c-bg: rgb(248, 113, 113);
+				--c-title: #fff6f6;
+				--c-detail: rgb(255, 216, 216);
+			}
+			html.green {
+				--c-bg: rgb(74, 222, 128);
+				--c-title: #000;
+				--c-detail: rgb(65, 65, 65);
+			}
+			html.blue {
+				--c-bg: rgb(96, 165, 250);
+				--c-title: #fff;
+				--c-detail: rgb(232, 242, 255);
+			}
+			body {
+				min-height: 100vh;
+				background-color: rgb(240, 241, 243);
+			}
+			.info-item {
+				max-width: 300px;
+				background-color: var(--c-bg);
+			}
+			.info-title {
+				color: var(--c-title);
+			}
+			.info-detail {
+				color: var(--c-detail);
+			}
+			.dot-item {
+				height: 25px;
+				width: 25px;
+				border-radius: 50%;
+				overflow: hidden;
+				position: relative;
+				cursor: pointer;
+			}
+			.dot-item.active {
+				height: 35px;
+				width: 35px;
+			}
+			.dot-item.system::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 50%;
+				height: 100%;
+				width: 100%;
+				background-color: #000;
+			}
+			.follow-system.active {
+				color: #fff;
+				background-color: rgb(100, 116, 139);
+			}
+			.dot-item + .dot-item {
+				margin-left: 16px;
+			}
+		</style>
+	</head>
+	<body class="flex items-center justify-center flex-col">
+		<div class="info-item transition-all rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+			<div>
+				<span class="inline-flex items-center justify-center p-2 bg-indigo-500 text-white rounded-md shadow-lg">
+					<i class="fa-solid fa-feather"></i>
+				</span>
+			</div>
+			<h3 class="info-title transition-all mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
+			<p class="info-detail transition-all mt-2 text-sm">
+				The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
+			</p>
+		</div>
+		<div class="mt-20">
+			<div>
+				<ul class="dot-list flex items-center">
+					<li
+						class="dot-item shadow hover:opacity-60 transition-all bg-white"
+						title="lighter"
+						data-mode="light"
+						onclick="setMode('Light')"
+					></li>
+					<li 
+						class="dot-item dark shadow hover:opacity-60 transition-all bg-black"
+						title="dark"
+						data-mode="dark"
+						onclick="setMode('Dark')"
+					></li>
+					<li 
+						class="dot-item  shadow hover:opacity-60 transition-all bg-red-400"
+						title="red"
+						data-mode="red"
+						onclick="setMode('Red')"
+					></li>
+					<li 
+						class="dot-item shadow hover:opacity-60 transition-all bg-green-400"
+						title="green"
+						data-mode="green"
+						onclick="setMode('Green')"
+					></li>
+					<li 
+						class="dot-item shadow hover:opacity-60 transition-all bg-blue-400"
+						title="blue"
+						data-mode="blue"
+						onclick="setMode('Blue')"
+					></li>
+				</ul>
+				<div class="mt-6 flex text-center">
+					<div class="follow-system flex-1 p-1 mr-4 rounded-3xl transition-all
+						shadow bg-slate-200 hover:bg-slate-300 cursor-pointer"
+						title="follow system"
+						id="follow-system"
+						onclick="setMode('System')">
+						System
+					</div>
+					<div class="cancal-follow flex-1 p-1 rounded-3xl 
+						shadow bg-slate-200 hover:bg-slate-300 cursor-pointer"
+						title="cancel follow system"
+						onclick="onCancel()">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="../../iius.min.js"></script>
+<script>
+	const allDots = document.querySelectorAll('.dot-item')
+	const followSystem = document.getElementById('follow-system')
+
+	function updateActive(tone) {
+		allDots.forEach(dot => {
+			dot.classList.remove('active')
+			if (dot.dataset.mode === tone) {
+				dot.classList.add('active')
+			}
+		})
+		if (getMode() === 'System') {
+			followSystem.classList.add('active')
+		} else {
+			followSystem.classList.remove('active')
+		}
+	}
+	const { init, getMode, setMode, cancel } = iius.createTone({
+		key: 'luoob-test-tone',
+		tones: ['Red', 'Green', 'Blue'],
+        onUpdate(tone) {
+			updateActive(tone)
+        }
+	})
+
+	function onCancel() {
+		cancel()
+		followSystem.classList.remove('active')
+	}
+
+	init()
+</script>

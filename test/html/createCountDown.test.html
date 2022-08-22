@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1,minimum-scale=1"
+		/>
+		<title>createCountDown</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://kit.fontawesome.com/c3c837a9d6.js"></script>
+        <style>
+            body {
+                min-height: 100vh;
+				background-color: rgb(240, 241, 243);
+            }
+        </style>
+	</head>
+	<body class="flex items-center justify-center">
+        <div class="count-down-wrapper bg-white rounded-xl shadow-lg py-3 px-4
+            flex items-center text-4xl">
+            <div class="day px-10 py-6" id="day">00</div>
+            <span class="text-slate-400">:</span>
+            <div class="hour px-10 py-6" id="hour">00</div>
+            <span class="text-slate-400">:</span>
+            <div class="minute px-10 py-6" id="minute">00</div>
+            <span class="text-slate-400">:</span>
+            <div class="second px-10 py-6" id="second">00</div>
+        </div>
+    </body>
+</html>
+<script src="../../iius.min.js"></script>
+<script>
+    const targetTime = +new Date() + iius.createTime({ day: 1 })
+    const dayEl = document.getElementById('day')
+    const hourEl = document.getElementById('hour')
+    const minuteEl = document.getElementById('minute')
+    const secondEl = document.getElementById('second')
+
+    function createCutDown (time, callback) {
+        function update() {
+            const now = +new Date()
+            const diff = time - now
+            if (diff < 0) {
+                return clearInterval(timer)
+            }
+            const countDown = iius.createCountDown(diff)
+            
+            callback && typeof callback === 'function' && callback(countDown)
+        }
+        const timer = setInterval(update, 1000)
+
+        update()
+        return () => {
+            clearInterval(timer)
+        }
+    }
+
+    const cancel = createCutDown(targetTime, ({ day, minute, hour, second }) => {
+        dayEl.textContent = day
+        minuteEl.textContent = minute
+        hourEl.textContent = hour
+        secondEl.textContent = second
+    })
+</script>

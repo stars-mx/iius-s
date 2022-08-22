@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1,minimum-scale=1"
+		/>
+		<title>createCopy</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://kit.fontawesome.com/c3c837a9d6.js"></script>
+        <style>
+            body {
+                min-height: 100vh;
+            }
+            article {
+                max-width: 50vw;
+            }
+        </style>
+	</head>
+	<body class="flex items-center justify-center">
+        <article class="mx-auto">
+            <h1 class="text-3xl font-bold mb-6">Design system</h1>
+            <section class="mb-4 text-slate-700">
+                <span></span>
+                <i 
+                    class="fa-solid fa-copy ml-1 cursor-pointer hover:text-slate-500"
+                    onclick="copyFirstSection()"
+                ></i>
+            </section>
+            <section class="text-slate-700">
+                <span></span>
+                <i 
+                    class="fa-solid fa-copy ml-1 cursor-pointer hover:text-slate-500"
+                    onclick="copySecondSection()"
+                ></i>
+            </section>
+        </article>
+    </body>
+</html>
+<script src="../../iius.min.js"></script>
+<script>
+    const firstParagraph = 'A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design.'
+    const secondParagraph = 'In some cases, the direct construction of an object without an explicit prior plan (such as in craftwork, some engineering, coding, and graphic design) may also be consideredto be a design activity.'
+
+    ;(() => {
+        const sections = document.querySelectorAll('article > section > span')
+        sections[0].textContent = firstParagraph
+        sections[1].textContent = secondParagraph
+    })()
+
+    const copyer = iius.createCopy()
+
+    function copyFirstSection() {
+        copyer.exec(firstParagraph)
+        alert('Copy Successfull')
+    }
+
+    function copySecondSection() {
+        copyer.exec(secondParagraph)
+        alert('Copy Successfull')
+    }
+</script>
